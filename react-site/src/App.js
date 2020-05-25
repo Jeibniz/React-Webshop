@@ -22,10 +22,12 @@ class App extends Component {
         this.props.simpleAction();
     };
 
+
+
     render() {
         return (
             <div>
-              <ShopPage/>
+              <ShopPage />
               <pre>
               {
                   JSON.stringify(this.props)
