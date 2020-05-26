@@ -1,4 +1,5 @@
 import React from "react";
+//import Grid from '@material-ui/core/Grid';
 import { render, unmountComponentAtNode } from "react-dom";
 import ShopPage from './ShopPage';
 
@@ -31,3 +32,11 @@ it("renders with ShopPageItem:s based on itemData state", () => {
         expect(items[i].props.itemName).toEqual(shopPage.state.itemData[i]);
     }
 });
+
+/*
+TODO: Implement
+it("renders with correct number of items per row", () => {
+
+});
+*/
+

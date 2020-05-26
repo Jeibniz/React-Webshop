@@ -1,0 +1,11 @@
+.ShopPage-GridContainer {
+    display: flex;
+    background-color: aqua;
+}
+
+
+.ShopPage-GridItem {
+    /*display: inline-block;*/
+    flex: auto;
+    background-color: gold;
+}
