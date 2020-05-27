@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { simpleAction } from './actions/simpleAction'
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
+//import PlaceholderImageContext from "./paths/PlaceholderImageContext"
 
 const mapDispatchToProps = dispatch => ({
     simpleAction: () => dispatch(simpleAction())
@@ -15,6 +16,11 @@ const mapStateToProps = state => ({
 
 
 class App extends Component {
+
+    constructor(props) {
+        super(props);
+    }
+
     /**
      * @summary handles button click
      */
@@ -22,11 +28,9 @@ class App extends Component {
         this.props.simpleAction();
     };
 
-
-
     render() {
         return (
-            <div>
+            <div className="App">
               <ShopPage />
               <pre>
               {

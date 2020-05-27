@@ -1,0 +1,95 @@
+{
+  "items": [
+    {
+      "name": "Street Climbing Shoe",
+      "brand": "So Ill",
+      "price": 1290,
+      "price_unit": "kr",
+      "image_name": "./so_ill_shoe.jpeg"
+    },
+    {
+      "name": "Theory Women's Climbing Shoe",
+      "brand": "La Sportiva",
+      "price": 1590,
+      "price_unit": "kr",
+      "image_name": "./la_sportiva_women_shoe.jpeg"
+    },
+    {
+      "name": "Momentum Lace Climbing Shoe Men's",
+      "brand": "Black Diamond",
+      "price": 850,
+      "price_unit": "kr",
+      "image_name": "./black_diamond_shoe.jpeg"
+    },
+    {
+      "name": "Solution Guide Harness - Men's",
+      "brand": "Black Diamond",
+      "price": 999,
+      "price_unit": "kr",
+      "image_name": "./black_diamond_harness.jpeg"
+    },
+    {
+      "name": "Aero-Classic II",
+      "brand": "Beal",
+      "price": 500,
+      "price_unit": "kr",
+      "image_name": "./beal_harness.jpeg"
+    },
+    {
+      "name": "Contact - 9.8mm",
+      "brand": "Petzl",
+      "price": 1372,
+      "price_unit": "kr",
+      "image_name": "./petzl_rope.jpg"
+    },
+    {
+      "name": "Set 6 Orbit Wire Express KS 11 cm",
+      "brand": "Camp",
+      "price": 635,
+      "price_unit": "kr",
+      "image_name": "./camp_qd.png"
+    },
+    {
+      "name": "HotForge Hybrid Quickdraw ",
+      "brand": "Black diamond",
+      "price": 165,
+      "price_unit": "kr",
+      "image_name": "./test_quick_draw.jpeg"
+    },
+    {
+      "name": "Friend Set 1, 2, 3",
+      "brand": "Wild Country",
+      "price": 1920,
+      "price_unit": "kr",
+      "image_name": "./wc_friends.jpeg"
+    },
+    {
+      "name": "Wallnut Set 7-11",
+      "brand": "DMM",
+      "price": 560,
+      "price_unit": "kr",
+      "image_name": "./dmm_nut.jpg"
+    },
+    {
+      "name": "18mm Nylon Runner",
+      "brand": "Black Diamond",
+      "price": 55,
+      "price_unit": "kr",
+      "image_name": "./bd_sling.jpg"
+    },
+    {
+      "name": "Grand Guts Crash pad",
+      "brand": "Snap",
+      "price": 4377,
+      "price_unit": "kr",
+      "image_name": "./snap_crashpad.jpeg"
+    },
+    {
+      "name": "Wood Grips Compact",
+      "brand": "Metolius",
+      "price": 1080,
+      "price_unit": "kr",
+      "image_name": "./hangboard.jpg"
+    }
+  ]
+}

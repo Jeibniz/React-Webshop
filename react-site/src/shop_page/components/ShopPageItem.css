@@ -1,0 +1,30 @@
+.ShopPageItem-Container {
+    background-color: white;
+    align-content: center;
+    justify-content: center;
+    border-radius: 10px;
+    border-width: medium;
+    padding: 10px;
+    text-align: center;
+}
+
+.ShopPageItem-Image {
+    /*display: inline-block;*/
+    float: none;
+    margin: auto;
+    align-content: center;
+    justify-content: center;
+}
+
+.ShopPageItem-Brand {
+    font-size: medium;
+    font-weight: bold;
+}
+
+.ShopPageItem-Name {
+    font-size: large;
+}
+
+.ShopPageItem-Price {
+    font-size: larger;
+}

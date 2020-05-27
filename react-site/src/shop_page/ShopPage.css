@@ -1,11 +1,14 @@
-.ShopPage-GridContainer {
-    display: flex;
-    background-color: aqua;
+.ShopPage-Container {
+    padding: 50px 75px;
+
 }
 
+.ShopPage-GridContainer {
+    display: flex;
+}
 
 .ShopPage-GridItem {
     /*display: inline-block;*/
     flex: auto;
-    background-color: gold;
+    /*background-color: gold;*/
 }

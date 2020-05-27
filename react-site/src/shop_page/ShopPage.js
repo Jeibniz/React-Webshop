@@ -3,6 +3,7 @@ import Grid from '@material-ui/core/Grid';
 import ShopPageItem from './components/ShopPageItem'
 
 import './ShopPage.css';
+import placeholderData from './itemData.json'
 
 /**
  * Contains the page where the user browses items to shop.
@@ -11,17 +12,20 @@ class ShopPage extends Component {
     // TODO: Replace with data from API
 
     ITEMS_PER_ROW = 3;
-    GRID_SPACING = 10;
+    GRID_SPACING = 5;
 
     constructor(props) {
         super(props);
         const testData =
             ["Beastmaker 2000", "Black diamond quick draws", "Mad Rock shoes", "Moon Crash pad", "Simond helmet",
                 "Screewgate carabiner", "La sportvia T-shirt", "Mammuth rope"];
-        this.state = {itemData: testData};
+        //const data = JSON.parse(placeholderData);
+        console.log(placeholderData);
+        console.log(placeholderData.items[0].name);
+
+        this.state = {itemData: placeholderData.items};
         let items = this.createTestItems();
         this.grid = this.createGridRows(items, this.ITEMS_PER_ROW, this.GRID_SPACING);
-        //this.grid = <p>Hello</p>;
     }
 
     createTestItems = () => {
@@ -30,6 +34,7 @@ class ShopPage extends Component {
       }
       return this.state.itemData.map((element, id) => {
           return    <Grid item
+                          xs={4}
                           key = {"shop_page_item_" + id}
                           data-testid="item"
                           className ="ShopPage-GridItem"
@@ -37,7 +42,7 @@ class ShopPage extends Component {
                         <ShopPageItem
                             key = {"shop_page_item_" + id}
                             className ="test"
-                            itemName={element}/>
+                            item={element}/>
                     </Grid>
       });
     };
@@ -71,7 +76,7 @@ class ShopPage extends Component {
 
     render() {
         return (
-            <div className ="Test">
+            <div className ="ShopPage-Container">
                 {this.grid}
             </div>
         );
