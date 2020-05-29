@@ -1,46 +1,41 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import { connect } from 'react-redux';
-import { simpleAction } from './actions/simpleAction'
+import  {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
-//import PlaceholderImageContext from "./paths/PlaceholderImageContext"
-
-const mapDispatchToProps = dispatch => ({
-    simpleAction: () => dispatch(simpleAction())
-});
-
-const mapStateToProps = state => ({
-    ...state
-});
+import DetailPage from "./detail_page/DetailPage";
+import routes from "constants/routes";
 
 
+/**
+ * The entry point of the app.
+ */
 class App extends Component {
 
     constructor(props) {
         super(props);
     }
 
-    /**
-     * @summary handles button click
-     */
-    simpleAction = (event) => {
-        this.props.simpleAction();
-    };
-
     render() {
         return (
-            <div className="App">
-              <ShopPage />
-              <pre>
-              {
-                  JSON.stringify(this.props)
-              }
-              </pre>
-              <button onClick={this.simpleAction}>Test redux action</button>
-            </div>
+            <Router>
+                <div className="App">
+                    <Switch>
+                        <Route path = {routes.DETAIL} exact>
+                            <DetailPage />
+                        </Route>
+
+                        <Route path = {routes.CHECKOUT} exact>
+                            <h1>Checkout</h1>
+                        </Route>
+
+                        <Route path = {routes.HOME}>
+                            <ShopPage />
+                        </Route>
+                    </Switch>
+                </div>
+            </Router>
         );
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default App;

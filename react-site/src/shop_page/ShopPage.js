@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
-import ShopPageItem from './components/ShopPageItem'
+import { withRouter } from 'react-router'
+import { connect } from 'react-redux';
+import { simpleAction } from 'actions/simpleAction'
+import { currentItemAction } from 'actions/currentItemAction'
 
+import ShopPageItem from './components/ShopPageItem'
+import routes from "constants/routes";
 import './ShopPage.css';
 import placeholderData from './itemData.json'
+
+
+const mapDispatchToProps = dispatch => ({
+    simpleAction: () => dispatch(simpleAction()),
+    currentItemAction: (item) => dispatch(currentItemAction(item))
+});
+
+const mapStateToProps = state => ({
+    ...state
+});
+
 
 /**
  * Contains the page where the user browses items to shop.
@@ -16,33 +32,27 @@ class ShopPage extends Component {
 
     constructor(props) {
         super(props);
-        const testData =
-            ["Beastmaker 2000", "Black diamond quick draws", "Mad Rock shoes", "Moon Crash pad", "Simond helmet",
-                "Screewgate carabiner", "La sportvia T-shirt", "Mammuth rope"];
-        //const data = JSON.parse(placeholderData);
-        console.log(placeholderData);
-        console.log(placeholderData.items[0].name);
-
         this.state = {itemData: placeholderData.items};
-        let items = this.createTestItems();
+        let items = this.createGridItems();
         this.grid = this.createGridRows(items, this.ITEMS_PER_ROW, this.GRID_SPACING);
     }
 
-    createTestItems = () => {
+    createGridItems = () => {
       if(null === this.state.itemData){
           return null;
       }
       return this.state.itemData.map((element, id) => {
           return    <Grid item
-                          xs={4}
-                          key = {"shop_page_item_" + id}
-                          data-testid="item"
-                          className ="ShopPage-GridItem"
-                          >
+                    xs={4}
+                    key = {"shop_page_item_" + id}
+                    data-testid= "item"
+                    className = "ShopPage-GridItem"
+                    onClick= {() => this.onItemClick(element)}
+                    >
                         <ShopPageItem
-                            key = {"shop_page_item_" + id}
-                            className ="test"
-                            item={element}/>
+                        key = {"shop_page_item_" + id}
+                        className ="test"
+                        item = {element}/>
                     </Grid>
       });
     };
@@ -74,13 +84,40 @@ class ShopPage extends Component {
             spacing={spacing}> {items} </Grid>
     };
 
+    onItemClick = (item) => {
+        console.log("Clicked Item: " + item.name);
+        this.addItemToRedux(item);
+        this.routeToDetail();
+    };
+
+    /**
+     * Will set the given item to current item in Redux.
+     * @param item Item that will be set to given item.
+     */
+    addItemToRedux= (item) => {
+        this.props.currentItemAction(item);
+    };
+
+    routeToDetail= () => {
+        this.props.history.push(routes.DETAIL);
+    };
+
+    /**
+     * @summary handles button click
+     */
+    simpleAction = (event) => {
+        this.props.currentItemAction(this.state.itemData[0]);
+    };
+
     render() {
         return (
             <div className ="ShopPage-Container">
                 {this.grid}
+
+                <button onClick={this.simpleAction}>Test redux action</button>
             </div>
         );
     }
 }
 
-export default ShopPage;
+export default connect(mapStateToProps, mapDispatchToProps) (withRouter(ShopPage));
