@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import  {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
+import  {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
 import DetailPage from "./detail_page/DetailPage";
@@ -10,10 +10,6 @@ import routes from "constants/routes";
  * The entry point of the app.
  */
 class App extends Component {
-
-    constructor(props) {
-        super(props);
-    }
 
     render() {
         return (

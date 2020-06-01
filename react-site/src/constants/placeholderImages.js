@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Provides a reference to the placeholder images folder.
  */

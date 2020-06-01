@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import imagePath from "constants/PlaceholderImages"
+import imagePath from "constants/placeholderImages"
 import './ShopPageItem.css';
 
 /**
