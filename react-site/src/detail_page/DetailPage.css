@@ -1,19 +1,27 @@
 .DetailPage-Container {
-    height: 92vh;
+    /*92vh;*/
     margin-top: 4vh;
     margin-bottom: 4vh;
     margin-right: 2vw;
     margin-left: 2vw;
-    padding: 1vh 1vw;
+
+    padding: 0vh 2vw;
 
     display: flex;
     flex-direction: row;
     flex-grow: 1;
 
+    align-self: flex-start;
     align-items: center;
     justify-content: center;
 
-    padding-right: 2vw;
+}
+
+.DetailPage-Grid {
+    min-height: 80vh;
+    align-self: flex-start;
+    align-items: center;
+    justify-content: center;
 
 }
 
@@ -29,6 +37,7 @@
 
     align-items: flex-start;
     text-align: left;
+}
 
 .DetailPageItem-Image {
     max-width: 100%;

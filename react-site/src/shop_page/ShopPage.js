@@ -34,7 +34,8 @@ class ShopPage extends Component {
         super(props);
         this.state = {itemData: placeholderData.items};
         let items = this.createGridItems();
-        this.grid = this.createGridRows(items, this.ITEMS_PER_ROW, this.GRID_SPACING);
+        this.grid = this.wrapTagsInGridContainer(items, this.GRID_SPACING, 'gridContainer_1');
+        //this.grid = this.createGridRows(items, this.ITEMS_PER_ROW, this.GRID_SPACING);
     }
 
     createGridItems = () => {
@@ -43,11 +44,13 @@ class ShopPage extends Component {
       }
       return this.state.itemData.map((element, id) => {
           return    <Grid item
-                    xs={4}
+                    xs = {12}
+                    sm = {6}
+                    md = {4}
                     key = {"shop_page_item_" + id}
                     data-testid= "item"
                     className = "ShopPage-GridItem"
-                    onClick= {() => this.onItemClick(element)}
+                    onClick = {() => this.onItemClick(element)}
                     >
                         <ShopPageItem
                         key = {"shop_page_item_" + id}
@@ -56,6 +59,7 @@ class ShopPage extends Component {
                     </Grid>
       });
     };
+    /*
 
     createGridRows = (items, itemsPerRow, spacing) => {
         let itemsInContainers = [];
@@ -75,6 +79,7 @@ class ShopPage extends Component {
 
         return itemsInContainers;
     };
+    */
 
     wrapTagsInGridContainer = (items, spacing, key) => {
         return <Grid
@@ -98,7 +103,7 @@ class ShopPage extends Component {
         this.props.currentItemAction(item);
     };
 
-    routeToDetail= () => {
+    routeToDetail = () => {
         this.props.history.push(routes.DETAIL);
     };
 

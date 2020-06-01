@@ -8,7 +8,6 @@ import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
 import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
-import { borders } from '@material-ui/system';
 
 import imagePath from "constants/placeholderImages"
 import routes from "constants/routes";
@@ -57,7 +56,8 @@ class DetailPage extends Component {
         const productImage = imagePath(this.state.item.image_name);
 
         return (
-            <Grid container component={Paper} className="DetailPage-Container">
+            <div className="DetailPage-Container">
+            <Grid container component={Paper} className="DetailPage-Grid">
                 <CssBaseline />
 
                 <Grid item
@@ -65,10 +65,8 @@ class DetailPage extends Component {
                       className="DetailPage-ImageContainer">
                     <img className="DetailPageItem-Image" src={productImage} alt="Product" />
                 </Grid>
-                <Grid container
+                <Grid item
                       xs={10} sm={4}
-                      direction="column"
-                      justify="space-between"
                       className="DetailPage-TextContainer"
                       >
 
@@ -82,7 +80,7 @@ class DetailPage extends Component {
                             {this.state.item.name}
                         </Box>
                     </Typography>
-                    <Typography component="p" variant="p">
+                    <Typography component="h6" variant="body1">
                         <Box fontWeight="fontWeightLight" m={1}>
                             {this.state.item.description}
                         </Box>
@@ -92,7 +90,7 @@ class DetailPage extends Component {
                             {this.state.item.price} {this.state.item.price_unit}
                         </Box>
                     </Typography>
-                    <Typography component="p" variant="p">
+                    <Typography component="h1" variant="body1">
                         <Box fontWeight="fontWeightLight" m={1}>
                             {this.state.item.stock} in stock
                         </Box>
@@ -104,12 +102,12 @@ class DetailPage extends Component {
                         variant = "contained"
                         color = "primary"
 
-                        buttonStyle={{ borderRadius: 50 }}
+                        buttonstyle = {{ borderRadius: 50 }}
                         style={{borderRadius:50}}
 
                         startIcon={<AddShoppingCartOutlinedIcon  style={{ fontSize: 30 }} />}
                     >
-                        <Typography component="h2" variant="p">
+                        <Typography component="h2" variant="body1">
                             <Box fontWeight="fontWeightRegular" m={1}>
                                 Add to cart
                             </Box>
@@ -117,6 +115,7 @@ class DetailPage extends Component {
                     </Button>
                 </Grid>
             </Grid>
+            </div>
         );
     }
 }

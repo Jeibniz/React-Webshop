@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import  {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import CartAppBar from 'components/CartAppBar'
+import TestBar from 'components/TestBar'
+
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
 import DetailPage from "./detail_page/DetailPage";
@@ -15,6 +18,7 @@ class App extends Component {
         return (
             <Router>
                 <div className="App">
+                    <CartAppBar />
                     <Switch>
                         <Route path = {routes.DETAIL} exact>
                             <DetailPage />
@@ -33,5 +37,4 @@ class App extends Component {
         );
     }
 }
-
 export default App;
