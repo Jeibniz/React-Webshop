@@ -7,7 +7,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Badge from '@material-ui/core/Badge';
 import IconButton from '@material-ui/core/IconButton';
-
+import Box from '@material-ui/core/Box';
 import HomeIcon from '@material-ui/icons/Home';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { withStyles } from '@material-ui/core/styles';
@@ -26,6 +26,10 @@ const styles = theme => ({
     },
     spaceFiller: {
         flexGrow: 1,
+    },
+    logoText: {
+        alignText: "left",
+        alignItems: "flex-start",
     },
     cartButton: {
         marginRight: theme.spacing(5),
@@ -68,6 +72,12 @@ class CartAppBar extends Component {
                             onClick = {this.routeToHome}>
                             <HomeIcon style={{ fontSize: 30 }} />
                         </IconButton>
+                        <Typography className={classes.logoText} >
+                            <Box fontWeight="fontWeightBold" m={1}>
+                                Jonathans Demo shop
+                            </Box>
+                        </Typography>
+
                         <Typography className={classes.spaceFiller} />
 
                         <IconButton
