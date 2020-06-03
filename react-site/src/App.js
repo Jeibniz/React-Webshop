@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import  {BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import CartAppBar from 'components/CartAppBar'
-import TestBar from 'components/TestBar'
 
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
 import DetailPage from "./detail_page/DetailPage";
+import CheckoutPage from "./checkout_page/CheckoutPage";
 import routes from "constants/routes";
 
 
@@ -25,7 +25,7 @@ class App extends Component {
                         </Route>
 
                         <Route path = {routes.CHECKOUT} exact>
-                            <h1>Checkout</h1>
+                            <CheckoutPage />
                         </Route>
 
                         <Route path = {routes.HOME}>

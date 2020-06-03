@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router'
 import routes from "constants/routes";
+import { connect } from 'react-redux';
 
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -30,6 +31,7 @@ const styles = theme => ({
     logoText: {
         alignText: "left",
         alignItems: "flex-start",
+        cursor: "default",
     },
     cartButton: {
         marginRight: theme.spacing(5),
@@ -43,10 +45,34 @@ const StyledBadge = withStyles((theme) => ({
     },
 }))(Badge);
 
+const mapStateToProps = state => ({
+    ...state
+});
+
+
 /**
  * The apps toolbar
  */
 class CartAppBar extends Component {
+
+    constructor (props) {
+        super(props);
+        this.state = {
+            itemsInCart: 0,
+        };
+
+    }
+
+    static getDerivedStateFromProps(nextProps, prevState){
+        const itemsInCart = nextProps.cartReducer.itemsInCart;
+
+        if( itemsInCart !== prevState.itemsInCart){
+            return { itemsInCart: itemsInCart};
+        }
+        else {
+            return null;
+        }
+    }
 
     routeToHome = () => {
         console.log("Routing to HOME");
@@ -72,7 +98,10 @@ class CartAppBar extends Component {
                             onClick = {this.routeToHome}>
                             <HomeIcon style={{ fontSize: 30 }} />
                         </IconButton>
-                        <Typography className={classes.logoText} >
+                        <Typography
+                            className={classes.logoText}
+                            onClick = {this.routeToHome}
+                            variant = "h6">
                             <Box fontWeight="fontWeightBold" m={1}>
                                 Jonathans Demo shop
                             </Box>
@@ -85,7 +114,7 @@ class CartAppBar extends Component {
                             className = {classes.cartButton}
                             onClick = {this.routeToCheckout}>
                             <StyledBadge
-                                badgeContent={1}
+                                badgeContent={this.state.itemsInCart}
                                 color="secondary">
                                 <ShoppingCartIcon style={{ fontSize: 30 }}/>
                             </StyledBadge>
@@ -101,5 +130,4 @@ CartAppBar.propTypes = {
     classes: PropTypes.object.isRequired,
 };
 
-export default withRouter(withStyles(styles)(CartAppBar));
-//export default connect(mapStateToProps, mapDispatchToProps) (withRouter(ShopPage));
+export default connect(mapStateToProps) (withRouter(withStyles(styles)(CartAppBar)));

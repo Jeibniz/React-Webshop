@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import Grid from '@material-ui/core/Grid';
 import { withRouter } from 'react-router'
 import { connect } from 'react-redux';
-import { simpleAction } from 'actions/simpleAction'
 import { currentItemAction } from 'actions/currentItemAction'
-
 import ShopPageItem from './components/ShopPageItem'
 import routes from "constants/routes";
 import './ShopPage.css';
@@ -12,7 +10,6 @@ import placeholderData from './itemData.json'
 
 
 const mapDispatchToProps = dispatch => ({
-    simpleAction: () => dispatch(simpleAction()),
     currentItemAction: (item) => dispatch(currentItemAction(item))
 });
 
@@ -35,7 +32,6 @@ class ShopPage extends Component {
         this.state = {itemData: placeholderData.items};
         let items = this.createGridItems();
         this.grid = this.wrapTagsInGridContainer(items, this.GRID_SPACING, 'gridContainer_1');
-        //this.grid = this.createGridRows(items, this.ITEMS_PER_ROW, this.GRID_SPACING);
     }
 
     createGridItems = () => {
@@ -59,27 +55,6 @@ class ShopPage extends Component {
                     </Grid>
       });
     };
-    /*
-
-    createGridRows = (items, itemsPerRow, spacing) => {
-        let itemsInContainers = [];
-        let temp = [];
-        let key;
-
-        // Get itemsPerRow items and wrap them in a container. Then repeat.
-        for(let i = 0; i < items.length; i++){
-            temp.push(items[i]);
-            // Wrap if itemsPerRow items have been grouped or if we are at last item.
-            if(i % itemsPerRow === itemsPerRow - 1 || i === items.length - 1){
-                key = Math.floor(i / itemsPerRow);
-                itemsInContainers.push(this.wrapTagsInGridContainer(temp, spacing, key));
-                temp = [];
-            }
-        }
-
-        return itemsInContainers;
-    };
-    */
 
     wrapTagsInGridContainer = (items, spacing, key) => {
         return <Grid
@@ -107,19 +82,11 @@ class ShopPage extends Component {
         this.props.history.push(routes.DETAIL);
     };
 
-    /**
-     * @summary handles button click
-     */
-    simpleAction = (event) => {
-        this.props.currentItemAction(this.state.itemData[0]);
-    };
 
     render() {
         return (
             <div className ="ShopPage-Container">
                 {this.grid}
-
-                <button onClick={this.simpleAction}>Test redux action</button>
             </div>
         );
     }
