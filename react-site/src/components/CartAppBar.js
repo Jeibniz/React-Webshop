@@ -81,7 +81,7 @@ class CartAppBar extends Component {
 
 
     routeToCheckout = () => {
-        this.props.history.push(routes.CHECKOUT);
+        this.props.history.push(routes.CART);
     };
 
 

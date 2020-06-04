@@ -1,0 +1,134 @@
+{
+  "items": [
+    {
+      "id": 1,
+      "name": "Street Climbing Shoe",
+      "brand": "So Ill",
+      "price": 1290,
+      "price_unit": "kr",
+      "image_name": "./so_ill_shoe.jpeg",
+      "stock": 3,
+      "description": "The So iLL Street climbing shoe’s stealth-black style lives up to the name of its military-grade “Dark Matter” rubber, in this high-performance, aggressive climbing shoe that performs exceptionally well on overhanging climbs.\n\nWith an ultra-thin midsole and highly downturned profile, the So iLL Street climbing shoe is highly sensitive and lightweight, allowing the foot to be nimble and precise with a flexibility that allows it to perform on steep faces and micro holds. "
+    },
+    {
+      "id": 2,
+      "name": "Theory Women's Climbing Shoe",
+      "brand": "La Sportiva",
+      "price": 1590,
+      "price_unit": "kr",
+      "image_name": "./la_sportiva_women_shoe.jpeg",
+      "stock": 7,
+      "description": "The Theory Women's is designed mainly for indoor climbing and competition climbing. It excels at climbing on big volumes because of it's amazing ability to get maximum rubber contact on holds, this is because unusually it doesn't have a midsole. This lets the shoe to go flat and spread its rubber on big volumes, which gives you the most amount of friction possible."
+    },
+    {
+      "id": 3,
+      "name": "Momentum Lace Climbing Shoe Men's",
+      "brand": "Black Diamond",
+      "price": 850,
+      "price_unit": "kr",
+      "image_name": "./black_diamond_shoe.jpeg",
+      "stock": 11,
+      "description": "The Black Diamond Momentum Lace Climbing Shoe Men's is a bit more premium than other beginner, entry-level climbing shoes because of its Engineered Knit Technology. It's basically a fancy term for a knitted upper, but it does have the benefit of being very comfortable and very breathable, whilst also providing stretch and support in the areas where it's needed. "
+    },
+    {
+      "id": 4,
+      "name": "Solution Guide Harness - Men's",
+      "brand": "Black Diamond",
+      "price": 999,
+      "price_unit": "kr",
+      "image_name": "./black_diamond_harness.jpeg",
+      "stock": 10,
+      "description": "No matter if you are on the hardest trad pitch of your life, bumbling around your local crag or having a huge multi-day big wall climb the Solution Guide will be your best friend as it is designed and built for trad climbing. It has an ultra-durable construction of Super Fabric which is an abrasion-resistant fabric that is infused with tiny guard plates - this enables the Solution Guide to withstand all the abuse that big wall climbing, multi-pitch climbing and single pitch trad climbing can throw at you day after day."
+    },
+    {
+      "id": 5,
+      "name": "Aero-Classic II",
+      "brand": "Beal",
+      "price": 500,
+      "price_unit": "kr",
+      "image_name": "./beal_harness.jpeg",
+      "stock": 23,
+      "description": "An all-round harness for sport, indoor, or trad climbing with durability, comfort, and versatility. The Beal Aero-Classic II features a sliding belt loop and automatic buckles on the thigh loops for quick and easy on-and-offs and will suit any beginner looking for their first harness or intermediates seeking all-day comfort."
+    },
+    {
+      "id": 6,
+      "name": "Contact - 9.8mm",
+      "brand": "Petzl",
+      "price": 1372,
+      "price_unit": "kr",
+      "image_name": "./petzl_rope.jpg",
+      "stock": 16,
+      "description": "The Petzl Contact is a lightweight (60g/m) and highly versatile 9.8mm sport climbing rope. The Petzl Contact has a surprisingly low impact force rating, meaning it can deal with softer catches as well as the potential to handle big whippers up to seven times. Petzl EverFlex treatment provides an enhanced grid and handling for many seasons. The Ultrasonic finish on the rope helps to prevent it from fraying, increasing its durability. A superb choice for those climbers wishing to progress their climbing."
+    },
+    {
+      "id": 7,
+      "name": "Set 6 Orbit Wire Express KS 11 cm",
+      "brand": "Camp",
+      "price": 635,
+      "price_unit": "kr",
+      "image_name": "./camp_qd.png",
+      "stock": 31,
+      "description": "The Orbit Wire Express KS 6 Pack is an affordable, all-round beginner’s quickdraw pack, constructed with everything needed to start indoor, sport, or trad climbing.\n\n The Orbit Wire Express K6 Pack is made to be as versatile and simple-to-use as possible to help beginner’s set off on the road to climbing. Features a smooth gate action with a Karstop Evo carabiner retainer for straightforward clipping, perfect for learners."
+    },
+    {
+      "id": 8,
+      "name": "HotForge Hybrid Quickdraw ",
+      "brand": "Black diamond",
+      "price": 165,
+      "price_unit": "kr",
+      "image_name": "./test_quick_draw.jpeg",
+      "stock": 50,
+      "description": "The HotForge Hybrid Quickdraw is a lightweight quickdraw ideal for sport climbing and trad climbing, it has a snag free HotForge keylock carabiner for clipping into a bolt or gear placements and on the bottom, it has a HotWire carabiner for clipping the rope into. It has a durable 18mm Polyester Dogbone which is easy to grab, great for working routes and has a Straitjacket insert which keeps the bottom carabiner in the best clipping position."
+    },
+    {
+      "id": 9,
+      "name": "Friend Set 1, 2, 3",
+      "brand": "Wild Country",
+      "price": 1920,
+      "price_unit": "kr",
+      "image_name": "./wc_friends.jpeg",
+      "stock": 19,
+      "description": "The Wild Country Friend Set contains sizes 1, 2, and 3 of the original camming device. The constant cam angle of 13.75 degrees remains at the heart of the New Friends' design, and modern features make it the most complete cam available. Hollow axles are stiffer and reduce weight, an extendable sling allow you to carry fewer quickdraws, and the thumb loop facilitates placing and removing. After 38 years of development it is still a friend."
+    },
+    {
+      "id": 10,
+      "name": "Wallnut Set 7-11",
+      "brand": "DMM",
+      "price": 560,
+      "price_unit": "kr",
+      "image_name": "./dmm_nut.jpg",
+      "stock": 13,
+      "description": "Wallnuts are a long established favourite across the world. This classic wired nut has a carefully designed shape that gives you the best possible chance of getting a good solid placement every time."
+    },
+    {
+      "id": 11,
+      "name": "18mm Nylon Runner",
+      "brand": "Black Diamond",
+      "price": 55,
+      "price_unit": "kr",
+      "image_name": "./bd_sling.jpg",
+      "stock": 46,
+      "description": "The Black Diamond 18mm Nylon Runner is a versatile sewn runner with durability and classic functionality for building anchors, slinging natural features, and extending placements."
+    },
+    {
+      "id": 12,
+      "name": "Grand Guts Crash pad",
+      "brand": "Snap",
+      "price": 4377,
+      "price_unit": "kr",
+      "image_name": "./snap_crashpad.jpeg",
+      "stock": 6,
+      "description": "The Grand Guts will be your perfect partner for highball boulders or if you just want a big landing when on smaller boulders. It has a very large landing zone of 150 x 120 x 15 cm and features Snaps patented Air Technology which hardens upon impact for a safer landing, the Air Technology has the unique feature of adapting to the climber’s fall making them perfect for high balls and low balls."
+    },
+    {
+      "id": 13,
+      "name": "Wood Grips Compact",
+      "brand": "Metolius",
+      "price": 1080,
+      "price_unit": "kr",
+      "image_name": "./hangboard.jpg",
+      "stock": 1,
+      "description": "The Metolius Wood Grips Compact II is a mid-sized climbing training board aimed at all climbing levels and built with super skin friendly wood."
+    }
+  ]
+}

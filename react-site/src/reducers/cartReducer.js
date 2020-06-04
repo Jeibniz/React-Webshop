@@ -8,9 +8,9 @@ export default (state = {}, action) => {
         case actionTypes.CART_ADD_ITEM:
             return addItem(action.cart, action.item);
         case actionTypes.CART_REMOVE_ITEM:
-            return removeItem(action.payload);
+            return removeItem(action.cart, action.item);
         case actionTypes.CART_SUBTRACT_ITEM:
-            return subtractItem(action.payload);
+            return subtractItem(action.cart, action.item);
         default:
             return state
     }
@@ -25,18 +25,38 @@ const addItem = (cart, itemId) => {
     }
     cart.set(itemId, newValue);
 
+    return createReduceObject(cart);
+};
+
+const removeItem = (cart, itemId) => {
+    cart.delete(itemId);
+    return createReduceObject(cart);
+};
+
+const subtractItem = (cart, itemId) => {
+    // Do noting if item is not in cart
+    if(!cart.has(itemId)){
+        return createReduceObject(cart);
+    }
+    // Remove if this is last item in cart
+    if (1 === cart.get(itemId)){
+        console.log("removing");
+        return removeItem(cart, itemId);
+    }
+    // Subtract one from item count
+    cart.set(itemId, cart.get(itemId) - 1);
+    return createReduceObject(cart);
+};
+
+/**
+ * Creates the object that will be returned by the reducer.
+ * @param cart The cart map that will be returned.
+ */
+const createReduceObject = (cart) => {
     return {
         cart: cart,
         itemsInCart: countItemsInCart(cart)
     };
-};
-
-const removeItem = (cart) => {
-    return cart;
-};
-
-const subtractItem = (cart) => {
-    return cart;
 };
 
 /**

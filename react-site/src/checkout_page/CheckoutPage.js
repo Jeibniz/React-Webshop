@@ -21,6 +21,18 @@ const mapStateToProps = state => ({
 */
 
 
+const styles = theme => ({
+    listItem: {
+        padding: theme.spacing(1, 0),
+    },
+    total: {
+        fontWeight: 700,
+    },
+    title: {
+        marginTop: theme.spacing(2),
+    },
+});
+
 /**
  * The page where the user confirms the purchase and adds address details.
  */
@@ -41,7 +53,8 @@ class CheckoutPage extends Component {
     };
 
     render() {
-       return (
+        const classes = this.props;
+        return (
            <div>
                <h3>Checkout</h3>
                <Button type = "submit"

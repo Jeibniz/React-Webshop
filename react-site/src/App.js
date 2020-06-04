@@ -5,6 +5,7 @@ import CartAppBar from 'components/CartAppBar'
 import './App.css';
 import ShopPage from "./shop_page/ShopPage";
 import DetailPage from "./detail_page/DetailPage";
+import CartPage from "./cart_page/CartPage";
 import CheckoutPage from "./checkout_page/CheckoutPage";
 import routes from "constants/routes";
 
@@ -22,6 +23,10 @@ class App extends Component {
                     <Switch>
                         <Route path = {routes.DETAIL} exact>
                             <DetailPage />
+                        </Route>
+
+                        <Route path = {routes.CART} exact>
+                            <CartPage />
                         </Route>
 
                         <Route path = {routes.CHECKOUT} exact>

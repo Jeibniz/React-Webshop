@@ -6,7 +6,7 @@ import { currentItemAction } from 'actions/currentItemAction'
 import ShopPageItem from './components/ShopPageItem'
 import routes from "constants/routes";
 import './ShopPage.css';
-import placeholderData from './itemData.json'
+import placeholderData from 'placeholder_resources/itemData.json'
 
 
 const mapDispatchToProps = dispatch => ({
