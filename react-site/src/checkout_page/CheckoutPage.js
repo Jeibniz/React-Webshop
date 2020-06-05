@@ -1,74 +1,144 @@
-import React, { Component } from 'react';
-/*import { connect } from 'react-redux';*/
-import { withRouter } from 'react-router'
-import Button from '@material-ui/core/Button';
-/*
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
+import Stepper from '@material-ui/core/Stepper';
+import Step from '@material-ui/core/Step';
+import StepLabel from '@material-ui/core/StepLabel';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import Box from '@material-ui/core/Box';
-import AddShoppingCartOutlinedIcon from '@material-ui/icons/AddShoppingCartOutlined';
 
-import imagePath from "constants/placeholderImages"
-import routes from "constants/routes";
-*/
+import AddressForm from "checkout_page/components/AddressForm"
+import PaymentForm from 'checkout_page/components/PaymentForm';
+import Review from 'checkout_page/components/Review';
 
-/*
-const mapStateToProps = state => ({
-    ...state
-});
-*/
-
-
-const styles = theme => ({
-    listItem: {
-        padding: theme.spacing(1, 0),
+const useStyles = makeStyles((theme) => ({
+    layout: {
+        width: 'auto',
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
+        [theme.breakpoints.up(600 + theme.spacing(2) * 2)]: {
+            width: 600,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+        },
     },
-    total: {
-        fontWeight: 700,
+    paper: {
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
+        padding: theme.spacing(2),
+        [theme.breakpoints.up(600 + theme.spacing(3) * 2)]: {
+            marginTop: theme.spacing(6),
+            marginBottom: theme.spacing(6),
+            padding: theme.spacing(3),
+        },
     },
-    title: {
-        marginTop: theme.spacing(2),
+    stepper: {
+        padding: theme.spacing(3, 0, 5),
     },
-});
+    buttons: {
+        display: 'flex',
+        justifyContent: 'flex-end',
+    },
+    button: {
+        marginTop: theme.spacing(3),
+        marginLeft: theme.spacing(1),
+    },
+}));
 
-/**
- * The page where the user confirms the purchase and adds address details.
- */
-class CheckoutPage extends Component {
+const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-    constructor(props) {
-        super(props);
-        this.cartMap = new Map();
-        this.cartMap.set(1, 4);
-        this.cartMap.set(2, 3);
-        this.cartMap.set(1, 5);
+export default function Checkout() {
+    const classes = useStyles();
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [addressData, setAddressData] = React.useState({});
+    const [paymentData, setPaymentData] = React.useState({});
+    const formId = "checkoutForm";
 
-    }
-
-    onButtonClick = () => {
-        console.log(JSON.stringify(this.cartMap));
-        console.log(this.cartMap);
+    const handleNext = () => {
+        // Get a reference to current from.
+        const form = document.getElementById(formId);
+        // Stay if form is not valid yet
+        if(null !== form && !form.reportValidity()){
+            return;
+        }
+        setActiveStep(activeStep + 1);
     };
 
-    render() {
-        const classes = this.props;
-        return (
-           <div>
-               <h3>Checkout</h3>
-               <Button type = "submit"
-                       variant = "contained"
-                       color = "primary"
-                       buttonstyle = {{ borderRadius: 50 }}
-                       style={{borderRadius:50}}
-                       onClick = {this.onButtonClick}
-               >
-                   Hello
-               </Button>
-           </div>
-       );
-    }
-}
+    const handleBack = () => {
+        setActiveStep(activeStep - 1);
+    };
 
-export default withRouter(CheckoutPage);
+    const onAddressUpdate = (data) => {
+        setAddressData(data);
+    };
+
+    const onPaymentUpdate = (data) => {
+        setPaymentData(data);
+    };
+
+    const getStepContent = (step) => {
+        switch (step) {
+            case 0:
+                return <AddressForm callback={onAddressUpdate} formId = {formId} />;
+            case 1:
+                return <PaymentForm callback={onPaymentUpdate} formId = {formId} />;
+            case 2:
+                return <Review address = {addressData} payment = {paymentData}/>;
+            default:
+                throw new Error('Unknown step');
+        }
+    };
+
+    return (
+        <React.Fragment>
+            <CssBaseline />
+            <main className={classes.layout}>
+                <Paper className={classes.paper}>
+                    <Typography component="h1" variant="h4" align="center">
+                        Checkout
+                    </Typography>
+                    <Stepper activeStep={activeStep} className={classes.stepper}>
+                        {steps.map((label) => (
+                            <Step key={label}>
+                                <StepLabel>{label}</StepLabel>
+                            </Step>
+                        ))}
+                    </Stepper>
+                    <React.Fragment>
+                        {activeStep === steps.length ? (
+                            <React.Fragment>
+                                <Typography variant="h5" gutterBottom>
+                                    Thank you for your order.
+                                </Typography>
+                                <Typography variant="subtitle1">
+                                    Your order number is #2001539. We have emailed your order confirmation, and will
+                                    send you an update when your order has shipped.
+                                </Typography>
+                            </React.Fragment>
+                        ) : (
+                            <React.Fragment>
+                                {getStepContent(activeStep)}
+                                <div className={classes.buttons}>
+                                    {activeStep !== 0 && (
+                                        <Button onClick={handleBack} className={classes.button}>
+                                            Back
+                                        </Button>
+                                    )}
+                                    <Button
+                                        variant="contained"
+                                        color="primary"
+                                        onClick={handleNext}
+                                        className={classes.button}
+                                    >
+                                        {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                                    </Button>
+                                </div>
+                            </React.Fragment>
+                        )}
+                    </React.Fragment>
+                </Paper>
+            </main>
+        </React.Fragment>
+    );
+}

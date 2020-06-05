@@ -4,6 +4,7 @@ import { withRouter } from 'react-router'
 import { addItemToCartAction } from 'actions/addItemToCartAction'
 import { subtractItemFromCartAction } from 'actions/subtractItemFromCartAction'
 import { removeItemFromCartAction } from 'actions/removeItemFromCartAction'
+import ItemLoader from 'network/itemLoader'
 
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
@@ -11,11 +12,9 @@ import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Paper from '@material-ui/core/Paper';
-
 import DeleteIcon from '@material-ui/icons/DeleteOutlined';
 import IconButton from '@material-ui/core/IconButton';
 import Icon from '@material-ui/core/Icon';
-
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -27,8 +26,6 @@ import { green, red } from '@material-ui/core/colors';
 
 import routes from "constants/routes";
 import imagePath from "constants/placeholderImages"
-import placeholderData from 'placeholder_resources/itemData.json'
-
 
 const mapDispatchToProps = dispatch => ({
     addItemToCartAction: (cart, item) => dispatch(addItemToCartAction(cart, item)),
@@ -41,7 +38,7 @@ const mapStateToProps = state => ({
     ...state
 });
 
-const styles = theme => ({
+const styles = (theme) => ({
     paper: {
         width: 'auto',
         marginLeft: theme.spacing(2),
@@ -116,40 +113,13 @@ class CartPage extends Component {
         this.cartMap.set(1, 5);
 
         this.state = {
-            items: CartPage.loadItem(this.props)
+            items: ItemLoader.loadItem(this.props.cartReducer.cart)
         }
     }
 
     static getDerivedStateFromProps(nextProps, prevState){
-        return { "items" : CartPage.loadItems(nextProps) };
+        return { "items" : ItemLoader.loadItems(nextProps.cartReducer.cart) };
     }
-
-    static loadItems = (props) => {
-        const items = [];
-        // If cart is empty
-        if(undefined === props.cartReducer.cart || null === props.cartReducer.cart){
-            return items;
-        }
-        props.cartReducer.cart.forEach(
-            (value, key) => {
-                items.push(CartPage.loadItem(key, value))
-            });
-        return items;
-    };
-
-
-    static loadItem = (id, quantity) => {
-        // TODO: Update with API call
-        for(let i = 0; i < placeholderData.items.length; i++){
-            if(id === placeholderData.items[i].id){
-                const item = placeholderData.items[i];
-                // Enrich data with quantity.
-                item.quantity = quantity;
-                return item;
-            }
-        }
-        return null;
-    };
 
     /**
      * Will route to checkout page
@@ -194,6 +164,9 @@ class CartPage extends Component {
         return item.price * item.quantity;
     };
 
+    /**
+     * Calculates the total cost of the order.
+     */
     totalPrice() {
         let sum = 0;
 
@@ -242,12 +215,12 @@ class CartPage extends Component {
                             <img src={imagePath(item.image_name)} alt="Product"
                                  className = {classes.itemImage} />
                             <div className = {classes.itemTextContainer}>
-                                <Typography>
+                                <Typography component="h1">
                                     <Box fontWeight="fontWeightBold" m={1}>
                                         {item.brand}
                                     </Box>
                                 </Typography>
-                                <Typography>
+                                <Typography component="h1">
                                     <Box fontWeight="fontWeightRegular" m={1}>
                                         {item.name}
                                     </Box>
