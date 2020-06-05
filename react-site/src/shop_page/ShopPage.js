@@ -24,7 +24,6 @@ const mapStateToProps = state => ({
 class ShopPage extends Component {
     // TODO: Replace with data from API
 
-    ITEMS_PER_ROW = 3;
     GRID_SPACING = 5;
 
     constructor(props) {

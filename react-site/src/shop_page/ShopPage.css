@@ -1,6 +1,5 @@
 .ShopPage-Container {
     padding: 50px 75px;
-    /*min-width: 1000px;*/
 }
 
 .ShopPage-GridContainer {
@@ -8,7 +7,5 @@
 }
 
 .ShopPage-GridItem {
-    /*display: inline-block;*/
     flex: auto;
-    /*background-color: gold;*/
 }
