@@ -11,6 +11,8 @@ export default (state = {}, action) => {
             return removeItem(action.cart, action.item);
         case actionTypes.CART_SUBTRACT_ITEM:
             return subtractItem(action.cart, action.item);
+        case actionTypes.CART_EMPTY:
+            return emptyCart();
         default:
             return state
     }
@@ -46,6 +48,13 @@ const subtractItem = (cart, itemId) => {
     // Subtract one from item count
     cart.set(itemId, cart.get(itemId) - 1);
     return createReduceObject(cart);
+};
+
+/**
+ * Returns a state representing an empty map object.
+ */
+const emptyCart = () => {
+    return createReduceObject(new Map());
 };
 
 /**

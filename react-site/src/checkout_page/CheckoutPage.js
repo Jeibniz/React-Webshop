@@ -1,4 +1,6 @@
 import React from 'react';
+import { useDispatch } from 'react-redux'
+import { emptyCartAction } from 'actions/emptyCartAction'
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Paper from '@material-ui/core/Paper';
@@ -46,6 +48,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
+
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
 export default function Checkout() {
@@ -55,6 +58,8 @@ export default function Checkout() {
     const [paymentData, setPaymentData] = React.useState({});
     const formId = "checkoutForm";
 
+    const dispatch = useDispatch();
+
     const handleNext = () => {
         // Get a reference to current from.
         const form = document.getElementById(formId);
@@ -62,6 +67,12 @@ export default function Checkout() {
         if(null !== form && !form.reportValidity()){
             return;
         }
+
+        // Clear cart if switching to the last step.
+        if(activeStep + 1 === steps.length){
+            dispatch(emptyCartAction());
+        }
+
         setActiveStep(activeStep + 1);
     };
 
